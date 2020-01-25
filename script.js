@@ -2,7 +2,6 @@ $(document).ready(()=>{
 	var audio_1 = new Howl({
       src: ['audio/1.mp3'],
       volume: 0.3,
-      autoplay: true,
   	  loop: true,
     });
     var audio_2 = new Howl({
@@ -30,12 +29,12 @@ $(document).ready(()=>{
 	play_1();
 
 	function play_1() {
-		audio_1.play();
 		audio_2.pause();
+		audio_1.play();
 	}
 	function play_2() {
-		audio_2.play();
 		audio_1.pause();
+		audio_2.play();
 	}
 	function play_2() {audio_2.play();}
 	function menu_sound() {audio_menu.play();}
