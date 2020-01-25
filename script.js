@@ -36,7 +36,6 @@ $(document).ready(()=>{
 		audio_1.pause();
 		audio_2.play();
 	}
-	function play_2() {audio_2.play();}
 	function menu_sound() {audio_menu.play();}
 	function button_sound() {audio_button.play();}
 	function picture_sound() {audio_picture.play();}
