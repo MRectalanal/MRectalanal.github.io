@@ -1,11 +1,14 @@
 $(document).ready(()=>{
 	var audio_1 = new Howl({
       src: ['audio/1.mp3'],
-      volume: 0.3
+      volume: 0.3,
+      autoplay: true,
+  	  loop: true,
     });
     var audio_2 = new Howl({
       src: ['audio/2.mp3'],
-      volume: 0.4
+      volume: 0.4,
+      loop: true,
     });
     var audio_menu = new Howl({
       src: ['audio/menu_hover.mp3'],
