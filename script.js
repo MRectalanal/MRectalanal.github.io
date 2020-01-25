@@ -1,29 +1,36 @@
 $(document).ready(()=>{
 	var audio_1 = new Howl({
       src: ['audio/1.mp3'],
-      volume: 0.1
+      volume: 0.3
     });
     var audio_2 = new Howl({
       src: ['audio/2.mp3'],
-      volume: 0.1
+      volume: 0.4
     });
     var audio_menu = new Howl({
       src: ['audio/menu_hover.mp3'],
-      volume: 0.1
+      volume: 0.3
     });
     var audio_button = new Howl({
       src: ['audio/button_click.mp3'],
-      volume: 0.1
+      volume: 0.3
     });
     var audio_picture = new Howl({
       src: ['audio/picture_click.mp3'],
-      volume: 0.1
+      volume: 0.3
     });
 	
 
 	play_1();
 
-	function play_1() {audio_1.play();}
+	function play_1() {
+		audio_1.play();
+		audio_2.pause();
+	}
+	function play_2() {
+		audio_2.play();
+		audio_1.pause();
+	}
 	function play_2() {audio_2.play();}
 	function menu_sound() {audio_menu.play();}
 	function button_sound() {audio_button.play();}
@@ -43,10 +50,12 @@ $(document).ready(()=>{
 		setTimeout(function() {$('.loh span').remove();}, 2000)
 	}
 
+	$('.dropdown-item, button').on('mouseenter', menu_sound);
+	$('.dropdown-item, button').on('click', button_sound);
 
 	$('path:not(.filled)').click(function() {
+		if(!$(this).hasClass('filled')) picture_sound();
 		$(this).addClass('filled');
-		picture_sound();
 		calc_score();
 	});
 
@@ -88,12 +97,14 @@ $(document).ready(()=>{
 	function win(argument) {
 		$('.score').addClass('winned');
 		$('#stop_play').addClass('winned');
+		play_2();
 		setTimeout(()=>{$('.modal#win').show()}, 2000);
 	}
 
 	$('.modal .close').click(function() {
 		$('.modal#win').hide();
 		stop_play();
+		play_1();
 	});
 
 	function stop_play() {
