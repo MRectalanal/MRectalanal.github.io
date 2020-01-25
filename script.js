@@ -3,13 +3,31 @@ $(document).ready(()=>{
       src: ['audio/1.mp3'],
       volume: 0.1
     });
-	audio_1.play();
+    var audio_2 = new Howl({
+      src: ['audio/2.mp3'],
+      volume: 0.1
+    });
+    var audio_menu = new Howl({
+      src: ['audio/menu_hover.mp3'],
+      volume: 0.1
+    });
+    var audio_button = new Howl({
+      src: ['audio/button_click.mp3'],
+      volume: 0.1
+    });
+    var audio_picture = new Howl({
+      src: ['audio/picture_click.mp3'],
+      volume: 0.1
+    });
+	
 
-	/*play_1();
+	play_1();
 
-	function play_1() {
-		$('#audio_1').play();
-	}*/
+	function play_1() {audio_1.play();}
+	function play_2() {audio_2.play();}
+	function menu_sound() {audio_menu.play();}
+	function button_sound() {audio_button.play();}
+	function picture_sound() {audio_picture.play();}
 	
 	
 	function loh() {
@@ -26,8 +44,9 @@ $(document).ready(()=>{
 	}
 
 
-	$('path').click(function() {
+	$('path:not(.filled)').click(function() {
 		$(this).addClass('filled');
+		picture_sound();
 		calc_score();
 	});
 
