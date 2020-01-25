@@ -25,6 +25,7 @@ svg {
     right: 0;
     left: 0;
     height: 80%;
+    max-width: 100%;
 }
 
 path, g, svg {
@@ -53,6 +54,10 @@ path.filled_lose {
 	top: 1em;
 	right: 1em;
 	z-index: 10;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+	background-color: #007bff9e;
 }
 
 .dropdown-item#play {

@@ -19,6 +19,10 @@ $(document).ready(()=>{
       src: ['audio/picture_click.mp3'],
       volume: 0.3
     });
+    var audio_lose = new Howl({
+      src: ['audio/shitttt.mp3'],
+      volume: 0.3
+    });
 	
 
 	play_1();
@@ -35,9 +39,11 @@ $(document).ready(()=>{
 	function menu_sound() {audio_menu.play();}
 	function button_sound() {audio_button.play();}
 	function picture_sound() {audio_picture.play();}
+	function lose_sound() {audio_lose.play();}
 	
 	
 	function loh() {
+		lose_sound();
 		let i = 0;
 		let loh_count = $('body').height() * $('body').width() / 3690;
 		while (i < loh_count) {
