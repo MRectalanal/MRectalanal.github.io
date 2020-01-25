@@ -1,0 +1,153 @@
+body, html {
+	max-width: 100%;
+	min-height: 100vh;
+	max-height: 100vh;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	position: relative;
+	background-color: var(--light);
+}
+
+.item_wrap {
+	max-height: 100vh;
+    max-width: 100vh;
+    margin: auto;
+    min-height: 100vh;
+    position: relative;
+}
+
+svg {
+	margin: auto;
+    position: absolute;
+    top: 4em;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 80%;
+}
+
+path, g, svg {
+	pointer-events:all;
+}
+
+path {
+	opacity: 0;
+}
+path:hover {
+	opacity: 1;
+}
+
+path.filled {
+	opacity: 0.8;
+}
+
+path.filled_lose {
+	opacity: 1;
+	fill: var(--red);
+    stroke: var(--orange)
+}
+
+#dropdownMenuButton {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	z-index: 10;
+}
+
+.dropdown-item#play {
+	background-color: var(--success);
+	color: white;
+}
+.dropdown-item#play:hover {
+	background-color: #50b868;
+}
+.dropdown-item#play:active {
+	background-color: var(--teal);
+}
+
+#stop_play {
+	position: absolute;
+    top: 1em;
+    left: 1em;
+    z-index: 10;
+    display: none;
+    transition: opacity 1s linear;
+}
+#stop_play.winned {
+	opacity: 0;
+}
+.score {
+	display: none;
+	position: absolute;
+	top: 2em;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: fit-content;
+	background-color: var(--gray-dark);
+    color: var(--white);
+    padding: 0.2em 0.7em;
+    border-radius: 1em;
+    opacity: 0.5;
+    font-size: 1.2em;
+    z-index: 10;
+    cursor: default;
+    transition: font-size 2s linear,
+    			opacity 2s cubic-bezier(0.6, -0.28, 0.74, 0.05),
+    			top 2s linear,
+    			padding 2s linear,
+    			border-radius 2s linear;
+}
+
+.score:hover {
+	opacity: 0.7;
+}
+
+.score.winned {
+	font-size: calc(100vw / 5);
+	opacity: 0;
+}
+
+#lesha_win {
+	max-width: 100%;
+    box-shadow: inset 0px 0px 50px var(--gray);
+    display: block;
+    padding-top: 1em;
+}
+
+#lesha_win > img {
+	width: 100%;
+}
+
+.modal h1 {
+	font-size: 2em;
+	text-align: center;
+	margin: 0.5em 0em 0em;
+}
+
+.loh {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+	height: fit-content;
+	margin: 0.5em 1em 1em; 
+	overflow: hidden;
+	max-height: calc(100vh - 1.5em);		
+}
+.loh > span {
+	font-size: 2em;
+	font-weight: bolder;
+	color: var(--purple);
+	animation: loh 2s ease;
+	opacity: 0.5;
+}
+
+
+@keyframes loh { 
+	0% {opacity: 0},
+	100% {opacity: 0.5;}
+}
