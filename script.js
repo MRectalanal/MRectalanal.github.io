@@ -1,7 +1,7 @@
 $(document).ready(()=>{
 	var audio_1 = new Howl({
       src: ['audio/1.mp3'],
-      volume: 0.5
+      volume: 0.1
     });
 	audio_1.play();
 
