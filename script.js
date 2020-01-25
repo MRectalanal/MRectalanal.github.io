@@ -24,8 +24,7 @@ $(document).ready(()=>{
       volume: 0.3
     });
 	
-
-	play_1();
+	$('svg').hover(play_1);
 
 	function play_1() {
 		audio_1.play();
