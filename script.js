@@ -6,8 +6,7 @@ $(document).ready(()=>{
     });
     var audio_2 = new Howl({
       src: ['audio/win_sound.mp3'],
-      volume: 0.4,
-      loop: true,
+      volume: 0.4
     });
     var audio_menu = new Howl({
       src: ['audio/menu_hover.mp3'],
