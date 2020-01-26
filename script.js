@@ -5,7 +5,7 @@ $(document).ready(()=>{
   	  loop: true,
     });
     var audio_2 = new Howl({
-      src: ['audio/2.mp3'],
+      src: ['audio/win_sound.mp3'],
       volume: 0.4,
       loop: true,
     });
@@ -26,14 +26,12 @@ $(document).ready(()=>{
       volume: 0.3
     });
 	
-	play_1();
+
 
 	function play_1() {
 		audio_2.pause();
-		audio_1.play();
 	}
 	function play_2() {
-		audio_1.pause();
 		audio_2.play();
 	}
 	function menu_sound() {audio_menu.play();}
@@ -56,36 +54,37 @@ $(document).ready(()=>{
 		setTimeout(function() {$('.loh span').remove();}, 2000)
 	}
 
-	$('.dropdown-item, button').on('mouseenter', menu_sound);
-	$('.dropdown-item, button').on('click', button_sound);
+	$('button').on('mouseenter', menu_sound);
+	$('button').on('click', button_sound);
 
-	$('path:not(.filled)').click(function() {
-		if(!$(this).hasClass('filled')) picture_sound();
-		$(this).addClass('filled');
-		calc_score();
-	});
-
-	$('#clear_all').click(()=>{
-		clear_all();
-	});
-
-	$('#show_all').click(()=>{
-		$('path').addClass('filled');
-	});
+	
 
 	$('#play').click(()=>{
-		$('#clear_all').click();
+		start_play();
+	});
+
+	function start_play() {
+		clear_all();
 		calc_score();
 		$('.score').css('display', 'block');
 		$('#stop_play').css('display', 'block');
-		$('#dropdownMenuButton').css('display', 'none');
-	});
+		$('#play').css('display', 'none');
 
-	$('#stop_play').click(()=>{
-		$('path:not(.filled)').addClass('filled_lose');
-		loh();
-		setTimeout(stop_play, 2000);
-	});
+		$('path:not(.filled)').click(function() {
+			if(!$(this).hasClass('filled')) {
+				picture_sound();
+				$(this).addClass('filled');
+				calc_score();
+			}
+		});
+
+		$('#stop_play').click(()=>{
+			$("#stop_play").attr("disabled", true);
+			$('path:not(.filled)').addClass('filled_lose');
+			loh();
+			setTimeout(stop_play, 2000);
+		});
+	}
 
 	function calc_score() {
 		let all = $('path').length,
@@ -100,11 +99,13 @@ $(document).ready(()=>{
 		$('path').removeClass('filled_lose');
 	}
 
-	function win(argument) {
+	function win() {
 		$('.score').addClass('winned');
 		$('#stop_play').addClass('winned');
 		play_2();
 		setTimeout(()=>{$('.modal#win').show()}, 2000);
+		$('#stop_play').off('click');
+		$('path:not(.filled)').off('click');
 	}
 
 	$('.modal .close').click(function() {
@@ -117,6 +118,9 @@ $(document).ready(()=>{
 		clear_all();
 		$('#stop_play').css('display', '');
 		$('.score').css('display', '');
-		$('#dropdownMenuButton').css('display', '');
+		$('#play').css('display', '');
+		$("#stop_play").attr("disabled", false);
+		$('#stop_play').off('click');
+		$('path:not(.filled)').off('click');
 	}
 });
